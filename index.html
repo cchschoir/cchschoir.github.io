@@ -18,7 +18,7 @@
     function makeApiCall() {
       var params = {
         // The ID of the spreadsheet to retrieve data from.
-        spreadsheetId: '1wqSW2jkXQGIaWXyUtMPRkOrMbU7panjka7D2x8xYtVQ',  // TODO: Update placeholder value.
+        spreadsheetId: '1t_cDH4KqoRiTs2IjbQvgokuWQ9EGg4TD1XvqQpzfK',  // TODO: Update placeholder value.
 
         // The A1 notation of the values to retrieve.
         range: 'Sheet1',  // TODO: Update placeholder value.
@@ -87,11 +87,13 @@
     }
 	
 	function populateSheet(result) {
+		var str = "";
 		for(var row=0; row<20; row++) {
 			for(var col=0; col<6; col++) {
-				document.getElementById("test").value = result.value[row][col];
+				str += ""+result.value[row][col];
 			}
 		}
+		document.getElementById("test").value
 	}
     </script>
     <script async defer src="https://apis.google.com/js/api.js"
