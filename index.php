@@ -85,7 +85,7 @@
     }
 	
 	function populateSheet(result) {
-		for(var row=0; row<10; row++) {
+		for(var row=0; row<7; row++) {
 			for(var col=0; col<5; col++) {
 				document.getElementById(row+":"+col).value = result.values[row][col];
 			}
