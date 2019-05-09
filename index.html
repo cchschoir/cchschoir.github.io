@@ -47,9 +47,6 @@
 		document.getElementById("textB").style.top =
 			(1 - Math.max(Math.max((200+pointsB/Math.max(pointsC,pointsT,pointsE,pointsB,1)*700-20),(200+pointsT/Math.max(pointsC,pointsT,pointsE,pointsB,1)*400)),200) / 1024) * 100 + "%";
 		document.getElementById("textB").innerHTML = pointsB;
-		
-		document.getElementById("hello").innerHTML = getDayDiff();
-		document.getElementById("gdbye").innerHTML = "<br>" + cSeries[cSeries.length-2];
 	}
 
 	function addTo(added, team) {
@@ -215,7 +212,7 @@
 <body>
     <script async defer src="https://apis.google.com/js/api.js"
       onload="this.onload=function(){};handleClientLoad()"
-      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">reload();
     </script>
 	<div id="center">
 		<img id="back" src="back.png" height="100%" width="100%">
@@ -262,6 +259,6 @@
 		</div>
 	</div>
 	<textarea type="text" value="Hello World" id="myInput" style="position: absolute; left:-100vw"></textarea>
-	<script>reload();</script>
+	<script></script>
   </body>
 </html>
