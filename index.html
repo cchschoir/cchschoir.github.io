@@ -101,7 +101,7 @@
 		}
 		return newValues;
 	}
-    function makeApiCallUpdate() {
+    function sheetsSend() {
       var params = {
         // The ID of the spreadsheet to update.
         spreadsheetId: '1t_cDH4KqoRiTs2IjbQvgokuWQ9EGg4TD1XvqQpzfK-8',
@@ -126,7 +126,7 @@
       });
     }
 
-    function makeApiCallGet() {
+    function sheetsGet() {
       var params = {
         // The ID of the spreadsheet to retrieve data from.
         spreadsheetId: '1t_cDH4KqoRiTs2IjbQvgokuWQ9EGg4TD1XvqQpzfK-8',  // TODO: Update placeholder value.
@@ -197,7 +197,7 @@
 
     function updateSignInStatus(isSignedIn) {
       if (isSignedIn) {
-        makeApiCallGet();
+        sheetsGet();
       }
     }
 
@@ -261,7 +261,7 @@
 	</div>
 	<textarea type="text" value="Hello World" id="myInput" style="position: absolute; left:-100vw"></textarea>
 	<script>
-	var refreshData = setInterval(makeApiCallUpdate, 1000);
+	var refreshData = setInterval(sheetsGet, 1000);
 	</script>
   </body>
 </html>
