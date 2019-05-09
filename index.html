@@ -260,6 +260,11 @@
 		</div>
 	</div>
 	<textarea type="text" value="Hello World" id="myInput" style="position: absolute; left:-100vw"></textarea>
-	<script>setTimeout(setInterval(makeApiCallGet(), 1000),1000)</script>
+	<script>
+	function refreshData {
+		setTimeout(makeApiCallGet(), 5000)
+	}
+	refreshData();
+	</script>
   </body>
 </html>
