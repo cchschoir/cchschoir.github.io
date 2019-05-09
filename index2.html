@@ -159,18 +159,18 @@
 	// Initialize Globals
 
 	// Format: [Score, Day]
-	var daySeries = [0,1,2,3];
-	var cSeries = [0,50,75,200]; // Callafiato is Orange
-	var tSeries = [0,12,35,50]; // Teovedar is Purple
-	var eSeries = [0,25,150,250]; // Ellazaire is Yellow
-	var bSeries = [0,40,100,300]; // Baladeo is Blue
-
+	var daySeries = [0,1,5,7,9,14,30,49];
+	var cSeries = [0,0,20,77,117,162,195]; // Callafiato is Orange
+	var tSeries = [0,20,50,93,123,158,192]; // Teovedar is Purple
+	var eSeries = [0,10,70,125,135,200,220]; // Ellazaire is Yellow
+	var bSeries = [0,0,35,100,120,145,188]; // Baladeo is Blue
+	
 	var oldday = new Date("November 15, 2018 12:00:00")
 
 	function getDayDiff() {
 		return Math.floor((new Date()-oldday)/(1000*60*60*24));
 	}
-	var dayNum = 4;
+	var dayNum = getDayDiff();
 
 	function reload() {
 		let pointsC = cSeries[cSeries.length-1];
@@ -252,7 +252,7 @@
 		document.execCommand("copy");
 		alert("Copied the scores to the clipboard!\nNow just use Command+V to paste it in the top-left cell in the spreadsheet.");
 	}
-    function makeApiCall() {
+    function makeApiCallUpdate() {
       var params = {
         // The ID of the spreadsheet to update.
         spreadsheetId: '1t_cDH4KqoRiTs2IjbQvgokuWQ9EGg4TD1XvqQpzfK-8',
@@ -279,6 +279,34 @@
       };
 
       var request = gapi.client.sheets.spreadsheets.values.update(params, valueRangeBody);
+      request.then(function(response) {
+        // TODO: Change code below to process the `response` object:
+        console.log(response.result);
+      }, function(reason) {
+        console.error('error: ' + reason.result.error.message);
+      });
+    }
+
+    function makeApiCallGet() {
+      var params = {
+        // The ID of the spreadsheet to retrieve data from.
+        spreadsheetId: '1t_cDH4KqoRiTs2IjbQvgokuWQ9EGg4TD1XvqQpzfK-8',  // TODO: Update placeholder value.
+
+        // The A1 notation of the values to retrieve.
+        range: 'Sheet1!A1:E1000',  // TODO: Update placeholder value.
+
+        // How values should be represented in the output.
+        // The default render option is ValueRenderOption.FORMATTED_VALUE.
+        //valueRenderOption: '',  // TODO: Update placeholder value.
+
+        // How dates, times, and durations should be represented in the output.
+        // This is ignored if value_render_option is
+        // FORMATTED_VALUE.
+        // The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
+        //dateTimeRenderOption: '',  // TODO: Update placeholder value.
+      };
+
+      var request = gapi.client.sheets.spreadsheets.values.get(params);
       request.then(function(response) {
         // TODO: Change code below to process the `response` object:
         console.log(response.result);
@@ -315,7 +343,7 @@
 
     function updateSignInStatus(isSignedIn) {
       if (isSignedIn) {
-        makeApiCall();
+        makeApiCallUpdate();
       }
     }
 
