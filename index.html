@@ -162,6 +162,7 @@
 			eSeries.push(array[i][3]);
 			bSeries.push(array[i][4]);
 		}
+		reload();
 		console.log(array);
       }, function(reason) {
         console.error('error: ' + reason.result.error.message);
@@ -214,10 +215,6 @@
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>
-	<script async defer src="https://apis.google.com/js/api.js"
-      onload="this.onload=function(){};handleClientLoad()"
-      onreadystatechange="if (this.readyState === 'complete') reload()">
-    </script>
 	<div id="center">
 		<img id="back" src="back.png" height="100%" width="100%">
 		
@@ -263,6 +260,6 @@
 		</div>
 	</div>
 	<textarea type="text" value="Hello World" id="myInput" style="position: absolute; left:-100vw"></textarea>
-	<script></script>
+	<script>setInterval(makeApiCallGet(), 1000)</script>
   </body>
 </html>
