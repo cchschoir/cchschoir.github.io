@@ -5,7 +5,6 @@
     <title>Choir House Points</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script>
-	// Format: [Score, Day]
 	var daySeries = [0];
 	var cSeries = [0]; // Callafiato is Orange
 	var tSeries = [0]; // Teovedar is Purple
@@ -49,100 +48,13 @@
 		document.getElementById("textB").innerHTML = pointsB;
 	}
 
-	function addTo(added, team) {
-		//global daySeries, cSeries, tSeries, eSeries, bSeries, pi, saveGame
-
-		// if datapoint is on a different day, add a new point.
-		if (daySeries[daySeries.length-1] != getDayDiff()) {
-			daySeries.push(""+getDayDiff());
-			cSeries.push(""+cSeries[cSeries.length-1]);
-			tSeries.push(""+tSeries[tSeries.length-1]);
-			eSeries.push(""+eSeries[eSeries.length-1]);
-			bSeries.push(""+bSeries[bSeries.length-1]);
-			reload();
-		}
-		// after there is a new point, then update the score
-		team[team.length-1] = team[team.length-1] + added;
-		saveGame = true; // Save after updating picture to reduce visual lag
-		switch (team) {
-			case "c":
-				cSeries[cSeries.length-1] = +cSeries[cSeries.length-1]+added;
-				break;
-			case "t":
-				tSeries[tSeries.length-1] = +tSeries[tSeries.length-1]+added;
-				break;
-			case "e":
-				eSeries[eSeries.length-1] = +eSeries[eSeries.length-1]+added;
-				break;
-			case "b":
-				bSeries[bSeries.length-1] = +bSeries[bSeries.length-1]+added;
-				break;
-		}
-		reload(team);
-	}
-	function save() {
-		saveString = "Time\tCallafiato\tTeovedar\tEllazaire\tBaladeo\t" + "lol" + '\t' + "numberz" + '\n'
-		let i = 0;
-		for(i = 0; i < daySeries.length; i++){
-			saveString += daySeries[i] + '\t' + cSeries[i] + '\t' + tSeries[i] + '\t' + eSeries[i] + '\t' + bSeries[i] + '\n';
-		}
-		document.getElementById("myInput").value = saveString;
-		let copyText = document.getElementById("myInput");
-		copyText.select();
-		document.execCommand("copy");
-		alert("Copied the scores to the clipboard!\nNow just use Command+V to paste it in the top-left cell in the spreadsheet.");
-	}
-	newValues = [];
-	function getValues() {
-		newValues = [["Time","Callafiato","Teovedar","Ellazaire","Baladeo"]];
-		let i = 0;
-		for(i = 0; i < daySeries.length; i++){
-			newValues.push([daySeries[i],cSeries[i],tSeries[i],eSeries[i],bSeries[i]]);
-		}
-		return newValues;
-	}
-    function sheetsSend() {
-      var params = {
-        // The ID of the spreadsheet to update.
-        spreadsheetId: '1t_cDH4KqoRiTs2IjbQvgokuWQ9EGg4TD1XvqQpzfK-8',
-
-        // The A1 notation of the values to update.
-        range: 'Sheet1!A1:E1000',
-
-        // How the input data should be interpreted.
-        valueInputOption: 'USER_ENTERED',
-      };
-	  getValues();
-      var valueRangeBody = {
-		"values": newValues
-      };
-
-      var request = gapi.client.sheets.spreadsheets.values.update(params, valueRangeBody);
-      request.then(function(response) {
-        // TODO: Change code below to process the `response` object:
-        console.log(response.result);
-      }, function(reason) {
-        console.error('error: ' + reason.result.error.message);
-      });
-    }
-
     function sheetsGet() {
       var params = {
         // The ID of the spreadsheet to retrieve data from.
-        spreadsheetId: '1t_cDH4KqoRiTs2IjbQvgokuWQ9EGg4TD1XvqQpzfK-8',  // TODO: Update placeholder value.
+        spreadsheetId: '1t_cDH4KqoRiTs2IjbQvgokuWQ9EGg4TD1XvqQpzfK-8',
 
         // The A1 notation of the values to retrieve.
-        range: 'Sheet1!A1:E1000',  // TODO: Update placeholder value.
-
-        // How values should be represented in the output.
-        // The default render option is ValueRenderOption.FORMATTED_VALUE.
-        //valueRenderOption: '',  // TODO: Update placeholder value.
-
-        // How dates, times, and durations should be represented in the output.
-        // This is ignored if value_render_option is
-        // FORMATTED_VALUE.
-        // The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
-        //dateTimeRenderOption: '',  // TODO: Update placeholder value.
+        range: 'Sheet1!A1:E1000',
       };
 
       var request = gapi.client.sheets.spreadsheets.values.get(params);
@@ -174,10 +86,6 @@
 
       var CLIENT_ID = '631806717678-vbb7lsgcipn3q074t17gkomfvh3fcr47.apps.googleusercontent.com'; 
 
-      // TODO: Authorize using one of the following scopes:
-      //   'https://www.googleapis.com/auth/drive'
-      //   'https://www.googleapis.com/auth/drive.file'
-      //   'https://www.googleapis.com/auth/spreadsheets'
       var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
 
       gapi.client.init({
@@ -199,14 +107,6 @@
       if (isSignedIn) {
         sheetsGet();
       }
-    }
-
-    function handleSignInClick(event) {
-      gapi.auth2.getAuthInstance().signIn();
-    }
-
-    function handleSignOutClick(event) {
-      gapi.auth2.getAuthInstance().signOut();
     }
     </script>
 </head>
@@ -230,36 +130,6 @@
 		
 		<img id="base" src="base.png" height="9.765625%" width="93.75%"> <!-- 1200/1280 and 100/1024 height="78.1vh" -->
 	</div>
-	<div id="buttons">	
-		<table>
-			<tr>
-				<td class="colC"><button onclick="addTo(5,'c')"><img class="butC" src="UpUpArrow64.png"></button></td>
-				<td class="colT"><button onclick="addTo(5,'t')"><img class="butT" src="UpUpArrow64.png"></button></td>
-				<td class="colE"><button onclick="addTo(5,'e')"><img class="butE" src="UpUpArrow64.png"></button></td>
-				<td class="colB"><button onclick="addTo(5,'b')"><img class="butB" src="UpUpArrow64.png"></button></td>
-			</tr>
-			<tr>
-				<td class="colC"><button onclick="addTo(1,'c')"><img class="butC" src="UpArrow64.png"></button></td>
-				<td class="colT"><button onclick="addTo(1,'t')"><img class="butT" src="UpArrow64.png"></button></td>
-				<td class="colE"><button onclick="addTo(1,'e')"><img class="butE" src="UpArrow64.png"></button></td>
-				<td class="colB"><button onclick="addTo(1,'b')"><img class="butB" src="UpArrow64.png"></button></td>
-			</tr>
-			<tr>
-				<td class="colC"><button onclick="addTo(-1,'c')"><img class="butC" src="DownArrow64.png"></button></td>
-				<td class="colT"><button onclick="addTo(-1,'t')"><img class="butT" src="DownArrow64.png"></button></td>
-				<td class="colE"><button onclick="addTo(-1,'e')"><img class="butE" src="DownArrow64.png"></button></td>
-				<td class="colB"><button onclick="addTo(-1,'b')"><img class="butB" src="DownArrow64.png"></button></td>
-			</tr>
-			<tr>
-				<td class="colC"><button onclick="addTo(-5,'c')"><img class="butC" src="DownDownArrow64.png"></button></td>
-				<td class="colT"><button onclick="addTo(-5,'t')"><img class="butT" src="DownDownArrow64.png"></button></td>
-				<td class="colE"><button onclick="addTo(-5,'e')"><img class="butE" src="DownDownArrow64.png"></button></td>
-				<td class="colB"><button onclick="addTo(-5,'b')"><img class="butB" src="DownDownArrow64.png"></button></td>
-			</tr>
-		</table>
-		</div>
-	</div>
-	<textarea type="text" value="Hello World" id="myInput" style="position: absolute; left:-100vw"></textarea>
 	<script>
 	var refreshData = setInterval(sheetsGet, 1000);
 	</script>
