@@ -252,6 +252,14 @@
 		document.execCommand("copy");
 		alert("Copied the scores to the clipboard!\nNow just use Command+V to paste it in the top-left cell in the spreadsheet.");
 	}
+	function getValues() {
+		var values = "Time\tCallafiato\tTeovedar\tEllazaire\tBaladeo\n"
+		let i = 0;
+		for(i = 0; i < daySeries.length; i++){
+			saveString += daySeries[i] + '\t' + cSeries[i] + '\t' + tSeries[i] + '\t' + eSeries[i] + '\t' + bSeries[i] + '\n';
+		}
+		return values;
+	}
     function makeApiCallUpdate() {
       var params = {
         // The ID of the spreadsheet to update.
@@ -265,17 +273,7 @@
       };
 
       var valueRangeBody = {
-		"values":
-			[
-				["Time", "Callafiato", "Teovedar", "Ellazaire", "Baladeo"],
-				["1", "2", "3", "4", "5"],
-				["5", "0", "20", "10", "0"],
-				["7", "20", "50", "70", "35"],
-				["9", "77", "93", "125", "100"],
-				["14", "117", "123", "135", "120"],
-				["30", "162", "158", "200", "145"],
-				["49", "195", "192", "220", "1880"]
-			]
+		"values": getValues()
       };
 
       var request = gapi.client.sheets.spreadsheets.values.update(params, valueRangeBody);
