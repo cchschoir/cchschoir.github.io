@@ -3,167 +3,16 @@
 <head>
     <meta charset="utf-8">
     <title>Choir House Points</title>
-	<style>
-	body {
-		max-height: 100%;
-		overflow-y: hidden;
-		text-align:center;
-		margin:0px;
-	}
-	img {
-		position: absolute;
-		top:0px;
-		left:0px;
-	}
-	@font-face {
-	  font-family: coolFont;
-	  src: url(GermaniaOne-Regular.ttf);
-	}
-	p {
-		position: absolute;
-		width:21.71875%;
-		text-align:center;
-		color:white;
-		font-size:13.6vh;
-		font-family:coolFont;
-		z-index:1;
-		margin-top:1%;
-		/*(cLocX+140, min(cLocY+100,h-100))*/
-	}
-	#back {
-		top:0px;
-		left:0px;
-	}
-	#imgC {
-		top:80.46875%; /*h-200 = 100%-200/1024*/
-		left:3.90625%; /* 50%-140/1280-450/1280 */
-	}
-	#imgT {
-		top:80.46875%;
-		left:27.34375%;  /* 50%-140/1280-150/1280 */
-	}
-	#imgE {
-		top:80.46875%;
-		left:50.78125%; / *50%-140/1280+150/1280 */
-	}
-	#imgB {
-		top:80.46875%;
-		left:74.21875%;  /* 50%-140/1280+450/1280 */
-	}
-	#base {
-		top:90.234375%; /* 100%-100/1024 (w/2-600, h-100) */
-		left: 3.125%;
-	}
-	#textC {
-		top:80.46875%; /*h-200 = 100%-200/1024*/
-		left:3.90625%; /* 50%-140/1280-450/1280 */
-	}
-	#textT {
-		top:80.46875%;
-		left:27.34375%;  /* 50%-140/1280-150/1280 */
-	}
-	#textE {
-		top:80.46875%;
-		left:50.78125%; / *50%-140/1280+150/1280 */
-	}
-	#textB {
-		top:80.46875%;
-		left:74.21875%;  /* 50%-140/1280+450/1280 */
-	}
-	#center {
-		position: absolute;
-		top:0px;
-		left:50%;
-		margin-left:-66.6666vh;
-		width:133.3333vh;
-		height:100vh;
-	}
-	#buttons {
-		box-sizing: border-box;
-		width:50vw; /* 50vw - 66.666vh */
-		height:50vw;
-		padding-left:66.6666vh;
-		margin-left:-66.6666vh;
-		padding-bottom:66.6666vh;
-		margin-bottom:-66.6666vh;	
-	}
-	button {
-		width:80%;
-		height:80%;
-		border: none;
-		background: none;
-		padding: 0px;
-		margin: 0px;
-	}
-	table {
-		width:100%;
-		height:100%;
-		border: none;
-		padding: 0px;
-		margin: 0px;
-		border-collapse: collapse;
-	}
-	tr, td {
-		border: none;
-		padding: 0px;
-		margin: 0px;
-		width:25%;
-		height:25%;
-	}
-	.colC {
-		background-color: #bb5027;
-	}
-	.colT {
-		background-color: #68297d;
-	}
-	.colE {
-		background-color: #c7a92f;
-	}
-	.colB {
-		background-color: #26377d;
-	}
-	.butC {
-		background-color: #f57d21;
-	}
-	.butT {
-		background-color: #903e98;
-	}
-	.butE {
-		background-color: #fcd836;
-	}
-	.butB {
-		background-color: #4455a5;
-	}
-	.colC,.colT,.colE,.colB{
-		height:25%;
-		width:25%;
-	}
-	.butC,.butT,.butE,.butB {
-		position:relative;
-		height:100%;
-		width:100%;
-	}
-	#hello,#gdbye {
-		position:absolute;
-		text-align:left;
-		width:auto;
-		top:50%;
-		left:0px;
-		color:black;
-		font-size:20px;
-		padding:0px;
-		margin:0px;
-	}
-	</style>
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<script>
 	// Initialize Globals
 
 	// Format: [Score, Day]
-	var daySeries = [0,5,7,9,14,30,49];
-	var cSeries = [0,0,20,77,117,162,195]; // Callafiato is Orange
-	var tSeries = [0,20,50,93,123,158,192]; // Teovedar is Purple
-	var eSeries = [0,10,70,125,135,200,220]; // Ellazaire is Yellow
-	var bSeries = [0,0,35,100,120,145,188]; // Baladeo is Blue
+	var daySeries = [0];
+	var cSeries = [0]; // Callafiato is Orange
+	var tSeries = [0]; // Teovedar is Purple
+	var eSeries = [0]; // Ellazaire is Yellow
+	var bSeries = [0]; // Baladeo is Blue
 	
 	var oldday = new Date("November 15, 2018 12:00:00")
 
@@ -211,10 +60,10 @@
 		// if datapoint is on a different day, add a new point.
 		if (daySeries[daySeries.length-1] != getDayDiff()) {
 			daySeries.push([getDayDiff()]);
-			cSeries.push([cSeries[cSeries.length-1]]);
-			tSeries.push([tSeries[tSeries.length-1]]);
-			eSeries.push([eSeries[eSeries.length-1]]);
-			bSeries.push([bSeries[bSeries.length-1]]);
+			cSeries.push(cSeries[cSeries.length-1]);
+			tSeries.push(tSeries[tSeries.length-1]);
+			eSeries.push(eSeries[eSeries.length-1]);
+			bSeries.push(bSeries[bSeries.length-1]);
 			reload();
 		}
 		// after there is a new point, then update the score
@@ -308,7 +157,19 @@
       var request = gapi.client.sheets.spreadsheets.values.get(params);
       request.then(function(response) {
         // TODO: Change code below to process the `response` object:
-        console.log(response.result);
+		daySeries = [];
+		cSeries = [];
+		tSeries = [];
+		eSeries = [];
+		bSeries = [];
+		let i = 1;
+		for(i = 1; i < response.length; i++){
+			daySeries.push(response[i][0]);
+			cSeries.push(response[i][0]);
+			tSeries.push(response[i][0]);
+			eSeries.push(response[i][0]);
+			bSeries.push(response[i][0]);
+		}
       }, function(reason) {
         console.error('error: ' + reason.result.error.message);
       });
@@ -342,7 +203,8 @@
 
     function updateSignInStatus(isSignedIn) {
       if (isSignedIn) {
-        makeApiCallUpdate();
+        makeApiCallGet();
+		reload();
       }
     }
 
@@ -410,8 +272,5 @@
 	<p id="hello"></p>
 	<p id="gdbye"></p>
 	<textarea type="text" value="Hello World" id="myInput" style="position: absolute; left:-100vw"></textarea>
-	<script>
-	reload()
-	</script>
   </body>
 </html>
