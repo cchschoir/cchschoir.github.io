@@ -64,6 +64,13 @@ p {
 	top:80.46875%;
 	left:74.21875%;  /* 50%-140/1280+450/1280 */
 }
+}
+#textDay {
+	top:0%;
+	right:0%;  /* 50%-140/1280+450/1280 */
+	font-size:3vh;
+	color: rgb(127, 0, 45);
+}
 #center {
 	position: absolute;
 	top:0px;
