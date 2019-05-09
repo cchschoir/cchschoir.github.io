@@ -59,11 +59,11 @@
 
 		// if datapoint is on a different day, add a new point.
 		if (daySeries[daySeries.length-1] != getDayDiff()) {
-			daySeries.push([getDayDiff()]);
-			cSeries.push(cSeries[cSeries.length-1]);
-			tSeries.push(tSeries[tSeries.length-1]);
-			eSeries.push(eSeries[eSeries.length-1]);
-			bSeries.push(bSeries[bSeries.length-1]);
+			daySeries.push(""+getDayDiff());
+			cSeries.push(""+cSeries[cSeries.length-1]);
+			tSeries.push(""+tSeries[tSeries.length-1]);
+			eSeries.push(""+eSeries[eSeries.length-1]);
+			bSeries.push(""+bSeries[bSeries.length-1]);
 			reload();
 		}
 		// after there is a new point, then update the score
@@ -206,7 +206,6 @@
     function updateSignInStatus(isSignedIn) {
       if (isSignedIn) {
         makeApiCallGet();
-		reload();
       }
     }
 
@@ -274,5 +273,6 @@
 	<p id="hello"></p>
 	<p id="gdbye"></p>
 	<textarea type="text" value="Hello World" id="myInput" style="position: absolute; left:-100vw"></textarea>
+	<script>reload();</script>
   </body>
 </html>
