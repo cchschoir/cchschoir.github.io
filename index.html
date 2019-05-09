@@ -5,8 +5,6 @@
     <title>Choir House Points</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script>
-	// Initialize Globals
-
 	// Format: [Score, Day]
 	var daySeries = [0];
 	var cSeries = [0]; // Callafiato is Orange
@@ -72,19 +70,15 @@
 		switch (team) {
 			case "c":
 				cSeries[cSeries.length-1] = +cSeries[cSeries.length-1]+added;
-				reload();
 				break;
 			case "t":
 				tSeries[tSeries.length-1] = +tSeries[tSeries.length-1]+added;
-				reload();
 				break;
 			case "e":
 				eSeries[eSeries.length-1] = +eSeries[eSeries.length-1]+added;
-				reload();
 				break;
 			case "b":
 				bSeries[bSeries.length-1] = +bSeries[bSeries.length-1]+added;
-				reload();
 				break;
 		}
 		reload(team);
@@ -264,14 +258,9 @@
 				<td class="colE"><button onclick="addTo(-5,'e')"><img class="butE" src="DownDownArrow64.png"></button></td>
 				<td class="colB"><button onclick="addTo(-5,'b')"><img class="butB" src="DownDownArrow64.png"></button></td>
 			</tr>
-			<tr>
-				<td class="colB"><button onclick="save()"><img class="butB" src="DownArrow64.png"></button></td>
-			</tr>
 		</table>
 		</div>
 	</div>
-	<p id="hello"></p>
-	<p id="gdbye"></p>
 	<textarea type="text" value="Hello World" id="myInput" style="position: absolute; left:-100vw"></textarea>
 	<script>reload();</script>
   </body>
