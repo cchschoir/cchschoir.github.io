@@ -163,13 +163,15 @@
 		eSeries = [];
 		bSeries = [];
 		let i = 1;
-		for(i = 1; i < response.length; i++){
-			daySeries.push(response[i][0]);
-			cSeries.push(response[i][0]);
-			tSeries.push(response[i][0]);
-			eSeries.push(response[i][0]);
-			bSeries.push(response[i][0]);
+		array = response.result;
+		for(i = 1; i < array.length; i++){
+			daySeries.push(array[i][0]);
+			cSeries.push(array[i][0]);
+			tSeries.push(array[i][0]);
+			eSeries.push(array[i][0]);
+			bSeries.push(array[i][0]);
 		}
+		console.log(array);
       }, function(reason) {
         console.error('error: ' + reason.result.error.message);
       });
