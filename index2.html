@@ -253,10 +253,10 @@
 		alert("Copied the scores to the clipboard!\nNow just use Command+V to paste it in the top-left cell in the spreadsheet.");
 	}
 	function getValues() {
-		var values = "Time\tCallafiato\tTeovedar\tEllazaire\tBaladeo\n"
+		var values = [["Time","Callafiato","Teovedar","Ellazaire","Baladeo"]]
 		let i = 0;
 		for(i = 0; i < daySeries.length; i++){
-			values += daySeries[i] + '\t' + cSeries[i] + '\t' + tSeries[i] + '\t' + eSeries[i] + '\t' + bSeries[i] + '\n';
+			values.push([daySeries[i],cSeries[i],tSeries[i]eSeries[i],bSeries[i]]);
 		}
 		return values;
 	}
