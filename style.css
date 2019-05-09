@@ -1,0 +1,150 @@
+body {
+	max-height: 100%;
+	overflow-y: hidden;
+	text-align:center;
+	margin:0px;
+}
+img {
+	position: absolute;
+	top:0px;
+	left:0px;
+}
+@font-face {
+  font-family: coolFont;
+  src: url(GermaniaOne-Regular.ttf);
+}
+p {
+	position: absolute;
+	width:21.71875%;
+	text-align:center;
+	color:white;
+	font-size:13.6vh;
+	font-family:coolFont;
+	z-index:1;
+	margin-top:1%;
+	/*(cLocX+140, min(cLocY+100,h-100))*/
+}
+#back {
+	top:0px;
+	left:0px;
+}
+#imgC {
+	top:80.46875%; /*h-200 = 100%-200/1024*/
+	left:3.90625%; /* 50%-140/1280-450/1280 */
+}
+#imgT {
+	top:80.46875%;
+	left:27.34375%;  /* 50%-140/1280-150/1280 */
+}
+#imgE {
+	top:80.46875%;
+	left:50.78125%; / *50%-140/1280+150/1280 */
+}
+#imgB {
+	top:80.46875%;
+	left:74.21875%;  /* 50%-140/1280+450/1280 */
+}
+#base {
+	top:90.234375%; /* 100%-100/1024 (w/2-600, h-100) */
+	left: 3.125%;
+}
+#textC {
+	top:80.46875%; /*h-200 = 100%-200/1024*/
+	left:3.90625%; /* 50%-140/1280-450/1280 */
+}
+#textT {
+	top:80.46875%;
+	left:27.34375%;  /* 50%-140/1280-150/1280 */
+}
+#textE {
+	top:80.46875%;
+	left:50.78125%; / *50%-140/1280+150/1280 */
+}
+#textB {
+	top:80.46875%;
+	left:74.21875%;  /* 50%-140/1280+450/1280 */
+}
+#center {
+	position: absolute;
+	top:0px;
+	left:50%;
+	margin-left:-66.6666vh;
+	width:133.3333vh;
+	height:100vh;
+}
+#buttons {
+	box-sizing: border-box;
+	width:50vw; /* 50vw - 66.666vh */
+	height:50vw;
+	padding-left:66.6666vh;
+	margin-left:-66.6666vh;
+	padding-bottom:66.6666vh;
+	margin-bottom:-66.6666vh;	
+}
+button {
+	width:80%;
+	height:80%;
+	border: none;
+	background: none;
+	padding: 0px;
+	margin: 0px;
+}
+table {
+	width:100%;
+	height:100%;
+	border: none;
+	padding: 0px;
+	margin: 0px;
+	border-collapse: collapse;
+}
+tr, td {
+	border: none;
+	padding: 0px;
+	margin: 0px;
+	width:25%;
+	height:25%;
+}
+.colC {
+	background-color: #bb5027;
+}
+.colT {
+	background-color: #68297d;
+}
+.colE {
+	background-color: #c7a92f;
+}
+.colB {
+	background-color: #26377d;
+}
+.butC {
+	background-color: #f57d21;
+}
+.butT {
+	background-color: #903e98;
+}
+.butE {
+	background-color: #fcd836;
+}
+.butB {
+	background-color: #4455a5;
+}
+.colC,.colT,.colE,.colB{
+	height:25%;
+	width:25%;
+}
+.butC,.butT,.butE,.butB {
+	position:relative;
+	height:100%;
+	width:100%;
+}
+#hello,#gdbye {
+	position:absolute;
+	text-align:left;
+	width:auto;
+	top:50%;
+	left:0px;
+	color:black;
+	font-size:20px;
+	padding:0px;
+	margin:0px;
+}
