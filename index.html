@@ -54,7 +54,7 @@
         spreadsheetId: '1t_cDH4KqoRiTs2IjbQvgokuWQ9EGg4TD1XvqQpzfK-8',
 
         // The A1 notation of the values to retrieve.
-        range: 'Sheet1!A1:E1000',
+        range: 'Sheet1!A2:E300',
       };
 
       var request = gapi.client.sheets.spreadsheets.values.get(params);
@@ -65,9 +65,9 @@
 		tSeries = [];
 		eSeries = [];
 		bSeries = [];
-		let i = 1;
+		let i = 0;
 		array = response.result.values;
-		for(i = 1; i < array.length; i++){
+		for(i = 0; i < array.length; i++){
 			daySeries.push(array[i][0]);
 			cSeries.push(array[i][1]);
 			tSeries.push(array[i][2]);
@@ -86,7 +86,7 @@
 
       var CLIENT_ID = '631806717678-vbb7lsgcipn3q074t17gkomfvh3fcr47.apps.googleusercontent.com'; 
 
-      var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
+      var SCOPE = 'https://www.googleapis.com/auth/spreadsheets.readonly';
 
       gapi.client.init({
         'apiKey': API_KEY,
@@ -132,7 +132,7 @@
 		<img id="base" src="base.png" height="9.765625%" width="93.75%"> <!-- 1200/1280 and 100/1024 height="78.1vh" -->
 	</div>
 	<script>
-	var refreshData = setInterval(sheetsGet, 2000);
+	var refreshData = setInterval(sheetsGet, 3000);
 	</script>
   </body>
 </html>

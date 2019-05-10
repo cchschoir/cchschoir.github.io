@@ -82,7 +82,7 @@
 	}
 	newValues = [];
 	function getValues() {
-		newValues = [["Time","Callafiato","Teovedar","Ellazaire","Baladeo"]];
+		newValues = [];
 		let i = 0;
 		for(i = 0; i < daySeries.length; i++){
 			newValues.push([daySeries[i],cSeries[i],tSeries[i],eSeries[i],bSeries[i]]);
@@ -95,7 +95,7 @@
         spreadsheetId: '1t_cDH4KqoRiTs2IjbQvgokuWQ9EGg4TD1XvqQpzfK-8',
 
         // The A1 notation of the values to update.
-        range: 'Sheet1!A1:E1000',
+        range: 'Sheet1!A2:E300',
 
         // How the input data should be interpreted.
         valueInputOption: 'USER_ENTERED',
