@@ -1,106 +1,135 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8">
-    <title>Choir House Points</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script>
-	var daySeries = [0];
-	var cSeries = [0]; // Callafiato is Orange
-	var tSeries = [0]; // Teovedar is Purple
-	var eSeries = [0]; // Ellazaire is Yellow
-	var bSeries = [0]; // Baladeo is Blue
-	
-	var oldday = new Date("November 15, 2018 12:00:00")
+  <meta charset="utf-8">
+  <title>Choir House Points</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script>
+    var daySeries = [0];
+    var cSeries = [0]; // Callafiato is Orange
+    var tSeries = [0]; // Teovedar is Purple
+    var eSeries = [0]; // Ellazaire is Yellow
+    var bSeries = [0]; // Baladeo is Blue
 
-	function getDayDiff() {
-		return Math.floor((new Date()-oldday)/(1000*60*60*24));
-	}
-	var dayNum = getDayDiff();
+    var oldday = new Date("November 15, 2018 12:00:00");
 
-	function reload() {
-		let pointsC = cSeries[cSeries.length-1];
-		let pointsT = tSeries[tSeries.length-1];
-		let pointsE = eSeries[eSeries.length-1];
-		let pointsB = bSeries[bSeries.length-1];
-		document.getElementById("imgC").style.top =
-			(1 - Math.max((200+pointsC/Math.max(pointsC,pointsT,pointsE,pointsB,1)*700),200) / 1024) * 100 + "%";
-		document.getElementById("textC").style.top =
-			(1 - Math.max(Math.max((200+pointsC/Math.max(pointsC,pointsT,pointsE,pointsB,1)*700-20),(200+pointsT/Math.max(pointsC,pointsT,pointsE,pointsB,1)*400)),200) / 1024) * 100 + "%";
-		document.getElementById("textC").innerHTML = pointsC;
+    function getDayDiff() {
+      return Math.floor((new Date() - oldday) / (1000 * 60 * 60 * 24));
+    }
+    var dayNum = getDayDiff();
 
-		document.getElementById("imgT").style.top =
-			(1 - Math.max((200+pointsT/Math.max(pointsC,pointsT,pointsE,pointsB,1)*700),200) / 1024) * 100 + "%";
-		document.getElementById("textT").style.top =
-			(1 - Math.max(Math.max((200+pointsT/Math.max(pointsC,pointsT,pointsE,pointsB,1)*700-20),(200+pointsT/Math.max(pointsC,pointsT,pointsE,pointsB,1)*400)),200) / 1024) * 100 + "%";
-		document.getElementById("textT").innerHTML =  pointsT;
+    function reload() {
+      let pointsC = cSeries[cSeries.length - 1];
+      let pointsT = tSeries[tSeries.length - 1];
+      let pointsE = eSeries[eSeries.length - 1];
+      let pointsB = bSeries[bSeries.length - 1];
 
-		document.getElementById("imgE").style.top =
-			(1 - Math.max((200+pointsE/Math.max(pointsC,pointsT,pointsE,pointsB,1)*700),200) / 1024) * 100 + "%";
-		document.getElementById("textE").style.top =
-			(1 - Math.max(Math.max((200+pointsE/Math.max(pointsC,pointsT,pointsE,pointsB,1)*700-20),(200+pointsT/Math.max(pointsC,pointsT,pointsE,pointsB,1)*400)),200) / 1024) * 100 + "%";
-		document.getElementById("textE").innerHTML =  pointsE;
+      document.getElementById("imgC").style.top =
+        (1 - Math.max(200 + (pointsC / Math.max(pointsC, pointsT, pointsE, pointsB, 1)) * 700, 200) / 1024) * 100 + "%";
 
-		document.getElementById("imgB").style.top =
-			(1 - Math.max((200+pointsB/Math.max(pointsC,pointsT,pointsE,pointsB,1)*700),200) / 1024) * 100 + "%";
-		document.getElementById("textB").style.top =
-			(1 - Math.max(Math.max((200+pointsB/Math.max(pointsC,pointsT,pointsE,pointsB,1)*700-20),(200+pointsT/Math.max(pointsC,pointsT,pointsE,pointsB,1)*400)),200) / 1024) * 100 + "%";
-		document.getElementById("textB").innerHTML = pointsB;
-	}
+      document.getElementById("textC").style.top =
+        (1 - Math.max(Math.max(200 + (pointsC / Math.max(pointsC, pointsT, pointsE, pointsB, 1)) * 700 - 20, 200 +
+          (pointsT / Math.max(pointsC, pointsT, pointsE, pointsB, 1)) * 400), 200) / 1024) * 100 + "%";
+
+      document.getElementById("textC").innerHTML = pointsC;
+
+      document.getElementById("imgT").style.top = (1 - Math.max(200 +
+        (pointsT / Math.max(pointsC, pointsT, pointsE, pointsB, 1)) * 700, 200) / 1024) * 100 + "%";
+
+      document.getElementById("textT").style.top =
+        (1 - Math.max(Math.max(200 + (pointsT / Math.max(pointsC, pointsT, pointsE, pointsB, 1)) * 700 - 20, 200 +
+          (pointsT / Math.max(pointsC, pointsT, pointsE, pointsB, 1)) * 400), 200) / 1024) * 100 + "%";
+
+      document.getElementById("textT").innerHTML = pointsT;
+
+      document.getElementById("imgE").style.top = (1 - Math.max(200 +
+        (pointsE / Math.max(pointsC, pointsT, pointsE, pointsB, 1)) * 700, 200) / 1024) * 100 + "%";
+
+      document.getElementById("textE").style.top =
+        (1 - Math.max(Math.max(200 + (pointsE / Math.max(pointsC, pointsT, pointsE, pointsB, 1)) * 700 - 20, 200 +
+          (pointsT / Math.max(pointsC, pointsT, pointsE, pointsB, 1)) * 400), 200) / 1024) * 100 + "%";
+
+      document.getElementById("textE").innerHTML = pointsE;
+
+      document.getElementById("imgB").style.top = (1 - Math.max(200 +
+        (pointsB / Math.max(pointsC, pointsT, pointsE, pointsB, 1)) * 700, 200) / 1024) * 100 + "%";
+
+      document.getElementById("textB").style.top =
+        (1 - Math.max(Math.max(200 + (pointsB / Math.max(pointsC, pointsT, pointsE, pointsB, 1)) * 700 - 20, 200 +
+          (pointsT / Math.max(pointsC, pointsT, pointsE, pointsB, 1)) * 400), 200) / 1024) * 100 + "%";
+
+      document.getElementById("textB").innerHTML = pointsB;
+    }
 
     function sheetsGet() {
       var params = {
         // The ID of the spreadsheet to retrieve data from.
-        spreadsheetId: '1t_cDH4KqoRiTs2IjbQvgokuWQ9EGg4TD1XvqQpzfK-8',
+        spreadsheetId: "1t_cDH4KqoRiTs2IjbQvgokuWQ9EGg4TD1XvqQpzfK-8",
 
         // The A1 notation of the values to retrieve.
-        range: 'Sheet1!A2:E300',
+        range: "Sheet1!A2:E300"
       };
 
       var request = gapi.client.sheets.spreadsheets.values.get(params);
-      request.then(function(response) {
-        // TODO: Change code below to process the `response` object:
-		daySeries = [];
-		cSeries = [];
-		tSeries = [];
-		eSeries = [];
-		bSeries = [];
-		let i = 0;
-		array = response.result.values;
-		for(i = 0; i < array.length; i++){
-			daySeries.push(array[i][0]);
-			cSeries.push(array[i][1]);
-			tSeries.push(array[i][2]);
-			eSeries.push(array[i][3]);
-			bSeries.push(array[i][4]);
-		}
-		reload();
-		console.log(array);
-      }, function(reason) {
-        console.error('error: ' + reason.result.error.message);
-      });
+      request.then(
+        function (response) {
+
+          array = response.result.values;
+          if (
+            array[array.length - 1][1] != cSeries[cSeries.length - 1][1] ||
+            array[array.length - 1][1] != tSeries[tSeries.length - 1][1] ||
+            array[array.length - 1][1] != eSeries[eSeries.length - 1][1] ||
+            array[array.length - 1][1] != bSeries[bSeries.length - 1][1]
+          ) {
+            daySeries = [];
+            cSeries = [];
+            tSeries = [];
+            eSeries = [];
+            bSeries = [];
+            let i = 0;
+            array = response.result.values;
+            for (i = 0; i < array.length; i++) {
+              daySeries.push(array[i][0]);
+              cSeries.push(array[i][1]);
+              tSeries.push(array[i][2]);
+              eSeries.push(array[i][3]);
+              bSeries.push(array[i][4]);
+            }
+            reload();
+            console.log("New data used");
+          } else {
+            console.log("Data checked");
+          }
+        },
+        function (reason) {
+          console.error("error: " + reason.result.error.message);
+        }
+      );
     }
 
     function initClient() {
-      var API_KEY = 'AIzaSyBebrhCX7sA1tz1x5CMjt97o4stz7Uxr4U'; 
+      var API_KEY = "AIzaSyBebrhCX7sA1tz1x5CMjt97o4stz7Uxr4U";
 
-      var CLIENT_ID = '631806717678-vbb7lsgcipn3q074t17gkomfvh3fcr47.apps.googleusercontent.com'; 
+      var CLIENT_ID = "631806717678-vbb7lsgcipn3q074t17gkomfvh3fcr47.apps.googleusercontent.com";
 
-      var SCOPE = 'https://www.googleapis.com/auth/spreadsheets.readonly';
+      var SCOPE = "https://www.googleapis.com/auth/spreadsheets.readonly";
 
-      gapi.client.init({
-        'apiKey': API_KEY,
-        'clientId': CLIENT_ID,
-        'scope': SCOPE,
-        'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
-      }).then(function() {
-        gapi.auth2.getAuthInstance().isSignedIn.listen(updateSignInStatus);
-        updateSignInStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-      });
+      gapi.client
+        .init({
+          apiKey: API_KEY,
+          clientId: CLIENT_ID,
+          scope: SCOPE,
+          discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"]
+        })
+        .then(function () {
+          gapi.auth2.getAuthInstance().isSignedIn.listen(updateSignInStatus);
+          updateSignInStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+        });
     }
 
     function handleClientLoad() {
-      gapi.load('client:auth2', initClient);
+      gapi.load("client:auth2", initClient);
     }
 
     function updateSignInStatus(isSignedIn) {
@@ -108,31 +137,33 @@
         sheetsGet();
       }
     }
-    </script>
+  </script>
 </head>
+
 <body>
-    <script async defer src="https://apis.google.com/js/api.js"
-      onload="this.onload=function(){};handleClientLoad()"
-      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+  <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()"
+    onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>
-	<div id="center">
-		<img id="back" src="back.png" height="100%" width="100%">
-		
-		
-		<img id="imgC" src="barC.png" height="97.265625%" width="21.71875%">		<!-- 278/1280 and 996/1024 -->
-		<p id="textC"></p>
-		<img id="imgT" src="barT.png" height="97.265625%" width="21.71875%">
-		<p id="textT"></p>
-		<img id="imgE" src="barE.png" height="97.265625%" width="21.71875%">
-		<p id="textE"></p>
-		<img id="imgB" src="barB.png" height="97.265625%" width="21.71875%">
-		<p id="textB"></p>
-		<p id="textDay"></p>
-		
-		<img id="base" src="base.png" height="9.765625%" width="93.75%"> <!-- 1200/1280 and 100/1024 height="78.1vh" -->
-	</div>
-	<script>
-	var refreshData = setInterval(sheetsGet, 3000);
-	</script>
-  </body>
+  <div id="center">
+    <img id="back" src="back.png" height="100%" width="100%">
+
+
+    <img id="imgC" src="barC.png" height="97.265625%" width="21.71875%"> <!-- 278/1280 and 996/1024 -->
+    <p id="textC"></p>
+    <img id="imgT" src="barT.png" height="97.265625%" width="21.71875%">
+    <p id="textT"></p>
+    <img id="imgE" src="barE.png" height="97.265625%" width="21.71875%">
+    <p id="textE"></p>
+    <img id="imgB" src="barB.png" height="97.265625%" width="21.71875%">
+    <p id="textB"></p>
+    <p id="textDay"></p>
+
+    <img id="base" src="base.png" height="9.765625%" width="93.75%"> <!-- 1200/1280 and 100/1024 height="78.1vh" -->
+  </div>
+	<div id="cover"></div>
+  <script>
+    var refreshData = setInterval(sheetsGet, 3000);
+  </script>
+</body>
+
 </html>
