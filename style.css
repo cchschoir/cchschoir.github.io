@@ -1,3 +1,6 @@
+* {
+	cursor: none;
+}
 body {
 	max-height: 100%;
 	overflow-y: hidden;
@@ -159,7 +162,7 @@ tr, td {
 }
 @media only screen and (max-width: 1000px) {
 	body {
-		overflow-y: visible;
+		overflow-y: hidden;
 	}
 	#center { /* Convert vh to vw by multiply by 3/4 */
 		position: absolute;
@@ -170,13 +173,13 @@ tr, td {
 		height:75vw;
 	}
 	#buttons {
-		position: relative;
-		height:100vh;
+		position: absolute;
+		top:75vw;
+		height:30vw;
 		width:100%;
 		margin:0px;
 		padding:0px;
 		float:right;
-		padding-top:75vw;
 		margin-left:auto;
 		padding-bottom:0px;
 		/*margin-bottom:0px;*/
@@ -193,6 +196,15 @@ tr, td {
 		margin-left:auto;
 		padding-bottom:0px;
 		/*margin-bottom:0px;*/
+	}
+	#signin {
+		position: absolute;
+		width:100vw;
+		height:100vh;
+		top:0px;
+		left:0px;
+		margin:0px;
+		background-color:rgba(138, 138, 138, 0.527);
 	}
 	p {
 		font-size:10.2vw;
