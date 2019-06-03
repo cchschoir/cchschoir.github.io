@@ -99,6 +99,23 @@ p {
 	padding-bottom:66.6666vh;
 	margin-bottom:-66.6666vh;	
 }
+#sslink {
+	box-sizing: border-box;
+	float:right;
+	position:absolute;
+	background-color: grey;
+	top:0px;
+	right:0px;
+	width:50vw; /* 50vw - 66.666vh */
+	height:50vw;
+	padding-right:66.6666vh;
+	margin-right:-66.6666vh;
+	padding-bottom:66.6666vh;
+	margin-bottom:-66.6666vh;	
+	color:white;
+	font-size:5vh;
+	font-family:coolFont;
+}
 button {
 	width:80%;
 	height:80%;
