@@ -1,6 +1,3 @@
-* {
-	cursor: none;
-}
 body {
 	max-height: 100%;
 	overflow-y: hidden;
@@ -160,6 +157,16 @@ tr, td {
 	width:100%;
 	z-index: 20;
 }
+#signin {
+	position: absolute;
+	width:100vw;
+	height:100vh;
+	top:0px;
+	left:0px;
+	margin:0px;
+	background-color:rgba(138, 138, 138, 0.527);
+	z-index: 21;
+}
 @media only screen and (max-width: 1000px) {
 	body {
 		overflow-y: hidden;
@@ -196,15 +203,6 @@ tr, td {
 		margin-left:auto;
 		padding-bottom:0px;
 		/*margin-bottom:0px;*/
-	}
-	#signin {
-		position: absolute;
-		width:100vw;
-		height:100vh;
-		top:0px;
-		left:0px;
-		margin:0px;
-		background-color:rgba(138, 138, 138, 0.527);
 	}
 	p {
 		font-size:10.2vw;

@@ -169,6 +169,10 @@
     function handleClientLoad() {
       gapi.load('client', initClient);
     }
+		
+		function handleSignInClick(event) {
+      gapi.auth2.getAuthInstance().signIn();
+    }
 
     function updateSignInStatus(isSignedIn) {
       if (isSignedIn) {
