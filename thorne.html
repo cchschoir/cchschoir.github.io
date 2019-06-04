@@ -13,7 +13,7 @@
 		var tSeries = [0]; // Teovedar is Purple
 		var eSeries = [0]; // Ellazaire is Yellow
 		var bSeries = [0]; // Baladeo is Blue
-
+		var resetnum = 11;
 		var oldday = new Date("November 15, 2018 12:00:00")
 
 		function getDayDiff() {
@@ -91,6 +91,25 @@
 			}
 			return newValues;
 		}
+		function reset() {
+			resetnum--;
+			if (resetnum == -1) {
+				daySeries = [];
+				cSeries = []; // Callafiato is Orange
+				tSeries = []; // Teovedar is Purple
+				eSeries = []; // Ellazaire is Yellow
+				bSeries = []; // Baladeo is Blue
+				resetnum = 11;
+				oldday = new Date();
+				sheetsSend();
+			}
+			else if (resetnum == 0) {
+				//change it to reset all scores
+			}
+			else {
+				//document Reset in whatever
+			}
+		}
 		function sheetsSend() {
 			var params = {
 				// The ID of the spreadsheet to update.
@@ -143,8 +162,6 @@
 					eSeries.push(array[i][3]);
 					bSeries.push(array[i][4]);
 				}
-				oldday = new Date("" + array[1][6])
-				console.log(array[1][6]);
 				reload();
 				console.log("Data sent");
 			}, function (reason) {
@@ -234,7 +251,10 @@
 			</tr>
 		</table>
 	</div>
-	<div id="sslink"><br><a href="https://docs.google.com/spreadsheets/d/1t_cDH4KqoRiTs2IjbQvgokuWQ9EGg4TD1XvqQpzfK-8/edit#gid=0">Link to graph</a><br></div>
+	<div id="sslink"><br><a target="_blank"
+			href="https://docs.google.com/spreadsheets/d/1t_cDH4KqoRiTs2IjbQvgokuWQ9EGg4TD1XvqQpzfK-8/edit#gid=0">Link to
+			graph</a><br><button id="reset" onclick="resetData()">Reset</button></div>
+
 	<button id="signin" onclick="handleSignInClick()">Tap to sign in</button>
 	<script>
 		var refreshData = setTimeout(sheetsGet, 1000);
