@@ -138,10 +138,10 @@
 		function sheetsGet() {
 			var params = {
 				// The ID of the spreadsheet to retrieve data from.
-				spreadsheetId: '1t_cDH4KqoRiTs2IjbQvgokuWQ9EGg4TD1XvqQpzfK-8',  // TODO: Update placeholder value.
+				spreadsheetId: '1t_cDH4KqoRiTs2IjbQvgokuWQ9EGg4TD1XvqQpzfK-8',
 
 				// The A1 notation of the values to retrieve.
-				range: 'Sheet1!A1:G400',  // TODO: Update placeholder value.
+				range: 'Sheet1!A1:G400',
 
 			};
 
@@ -156,11 +156,16 @@
 				let i = 1;
 				array = response.result.values;
 				for (i = 1; i < array.length; i++) {
-					daySeries.push(array[i][0]);
-					cSeries.push(array[i][1]);
-					tSeries.push(array[i][2]);
-					eSeries.push(array[i][3]);
-					bSeries.push(array[i][4]);
+					if (array[i][0] != undefined && array[i][0] != "") {
+						daySeries.push(array[i][0]);
+						cSeries.push(array[i][1]);
+						tSeries.push(array[i][2]);
+						eSeries.push(array[i][3]);
+						bSeries.push(array[i][4]);
+					}
+					else {
+						break;
+					}
 				}
 				reload();
 				console.log("Data sent");
