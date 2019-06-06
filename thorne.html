@@ -91,10 +91,12 @@
 			}
 			return newValues;
 		}
-		function reset() {
+		function resetData() {
 			resetnum--;
 			if (resetnum == 0) {
-				daySeries = [];
+				for (i = 0; i< daySeries.length; i++) {
+					daySeries[i] = ""; //This way it will write all values.
+				}
 				cSeries = []; // Callafiato is Orange
 				tSeries = []; // Teovedar is Purple
 				eSeries = []; // Ellazaire is Yellow
@@ -110,7 +112,7 @@
 				document.getElementById("reset").innerHTML = "Reset after " + resetnum + " more clicks";
 			}
 		}
-		function sheetsSend(changedate) {
+		function sheetsSend(reset) {
 			var params = {
 				// The ID of the spreadsheet to update.
 				spreadsheetId: '1t_cDH4KqoRiTs2IjbQvgokuWQ9EGg4TD1XvqQpzfK-8',
@@ -125,7 +127,7 @@
 			var valueRangeBody = {
 				"values": newValues
 			};
-			if(changedate) {
+			if(reset) {
 				valueRangeBody[0][4] = "" + new Date();
 				oldday = new Date("" + new Date());
 			}
@@ -258,7 +260,7 @@
 	</div>
 	<div id="sslink"><br><a target="_blank"
 			href="https://docs.google.com/spreadsheets/d/1t_cDH4KqoRiTs2IjbQvgokuWQ9EGg4TD1XvqQpzfK-8/edit#gid=0">Link to
-			graph</a><br><button id="reset" onclick="reset()">Reset</button></div>
+			graph</a><br><button id="reset" onclick="resetData()">Reset</button></div>
 
 	<button id="signin" onclick="handleSignInClick()">Tap to sign in</button>
 	<script>
