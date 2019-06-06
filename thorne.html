@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<title>Choir House Points</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script>
@@ -93,30 +93,30 @@
 		}
 		function reset() {
 			resetnum--;
-			if (resetnum == -1) {
+			if (resetnum == 0) {
 				daySeries = [];
 				cSeries = []; // Callafiato is Orange
 				tSeries = []; // Teovedar is Purple
 				eSeries = []; // Ellazaire is Yellow
 				bSeries = []; // Baladeo is Blue
 				resetnum = 11;
-				oldday = new Date();
-				sheetsSend();
+				oldday = new Date("" + new Date());
+				sheetsSend(true);
 			}
-			else if (resetnum == 0) {
-				//change it to reset all scores
+			else if (resetnum == 1) {
+				document.getElementById("reset").innerHTML = "ERASE ALL SCORES?";
 			}
 			else {
-				//document Reset in whatever
+				document.getElementById("reset").innerHTML = "Reset after " + resetnum + " more clicks";
 			}
 		}
-		function sheetsSend() {
+		function sheetsSend(changedate) {
 			var params = {
 				// The ID of the spreadsheet to update.
 				spreadsheetId: '1t_cDH4KqoRiTs2IjbQvgokuWQ9EGg4TD1XvqQpzfK-8',
 
 				// The A1 notation of the values to update.
-				range: 'Sheet1!A2:E400',
+				range: 'Sheet1!A2:F400',
 
 				// How the input data should be interpreted.
 				valueInputOption: 'USER_ENTERED',
@@ -125,6 +125,10 @@
 			var valueRangeBody = {
 				"values": newValues
 			};
+			if(changedate) {
+				valueRangeBody[0][4] = "" + new Date();
+				oldday = new Date("" + new Date());
+			}
 
 			var request = gapi.client.sheets.spreadsheets.values.update(params, valueRangeBody);
 			request.then(function (response) {
@@ -141,7 +145,7 @@
 				spreadsheetId: '1t_cDH4KqoRiTs2IjbQvgokuWQ9EGg4TD1XvqQpzfK-8',
 
 				// The A1 notation of the values to retrieve.
-				range: 'Sheet1!A1:G400',
+				range: 'Sheet1!A1:F400',
 
 			};
 
@@ -155,18 +159,14 @@
 				bSeries = [];
 				let i = 1;
 				array = response.result.values;
-				for (i = 1; i < array.length; i++) {
-					if (array[i][0] != undefined && array[i][0] != "") {
-						daySeries.push(array[i][0]);
-						cSeries.push(array[i][1]);
-						tSeries.push(array[i][2]);
-						eSeries.push(array[i][3]);
-						bSeries.push(array[i][4]);
-					}
-					else {
-						break;
-					}
+				for (i = 1; i < array.length && array[i][0] != undefined && array[i][0] != ""; i++) {
+					daySeries.push(array[i][0]);
+					cSeries.push(array[i][1]);
+					tSeries.push(array[i][2]);
+					eSeries.push(array[i][3]);
+					bSeries.push(array[i][4]);
 				}
+				oldday = new Date("" + array[0][4]);
 				reload();
 				console.log("Data sent");
 			}, function (reason) {
