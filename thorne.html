@@ -169,8 +169,9 @@
 					eSeries.push(array[i][3]);
 					bSeries.push(array[i][4]);
 				}
+				console.log("array[0][4] is " + array[0][4]);
 				oldday = new Date("" + array[0][4]);
-				console.log("Set oldday to" + new Date("" + array[0][4]));
+				console.log("Set oldday to " + new Date("" + array[0][4]));
 				reload();
 				console.log("Data sent");
 			}, function (reason) {
