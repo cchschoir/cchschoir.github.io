@@ -135,8 +135,8 @@
 				"values": newValues
 			};
 			if(reset) {
-				valueRangeBody[0][4] = "" + new Date();
-				oldday = new Date("" + new Date());
+				//valueRangeBody[0][4] = "" + new Date();
+				//oldday = new Date("" + new Date());
 			}
 
 			var request = gapi.client.sheets.spreadsheets.values.update(params, valueRangeBody);
