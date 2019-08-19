@@ -95,10 +95,10 @@
 		function resetData() {
 			resetnum--;
 			if (resetnum == 0) {
-				dayseries[0] = 0;
-				for (i = 1; i< daySeries.length; i++) {
+				for (i = 0; i< daySeries.length; i++) {
 					daySeries[i] = ""; //This way it will write all values.
 				}
+				dayseries[0] = 0;
 				cSeries = [0]; // Callafiato is Orange
 				tSeries = [0]; // Teovedar is Purple
 				eSeries = [0]; // Ellazaire is Yellow
@@ -106,7 +106,6 @@
 				resetnum = 11;
 				oldday = new Date("" + new Date());
 				sheetsSend(true);
-				document.location.reload(true);
 			}
 			else if (resetnum == 1) {
 				document.getElementById("reset").innerHTML = "ERASE ALL SCORES?";
