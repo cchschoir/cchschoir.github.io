@@ -94,18 +94,23 @@
 		}
 		function resetData() {
 			resetnum--;
-			if (resetnum == 0) {
-				for (i = 0; i< daySeries.length; i++) {
+			if (resetnum <= 0) {
+				for (i = 1; i< daySeries.length; i++) {
 					daySeries[i] = ""; //This way it will write all values.
+					cSeries[i] = ""; // Callafiato is Orange
+					tSeries[i] = ""; // Teovedar is Purple
+					eSeries[i] = ""; // Ellazaire is Yellow
+					bSeries[i] = ""; // Baladeo is Blue
 				}
 				daySeries[0] = 0;
-				cSeries = [0]; // Callafiato is Orange
-				tSeries = [0]; // Teovedar is Purple
-				eSeries = [0]; // Ellazaire is Yellow
-				bSeries = [0]; // Baladeo is Blue
+				cSeries[0] = 0; // Callafiato is Orange
+				tSeries[0] = 0; // Teovedar is Purple
+				eSeries[0] = 0; // Ellazaire is Yellow
+				bSeries[0] = 0; // Baladeo is Blue
 				resetnum = 11;
 				oldday = new Date("" + new Date());
 				sheetsSend(true);
+				document.getElementById("reset").innerHTML = "All scores reset, please refresh page.";
 			}
 			else if (resetnum == 1) {
 				document.getElementById("reset").innerHTML = "ERASE ALL SCORES?";
