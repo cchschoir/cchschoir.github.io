@@ -29,7 +29,7 @@
 			document.getElementById("imgC").style.top =
 				(1 - Math.max((200 + pointsC / Math.max(pointsC, pointsT, pointsE, pointsB, 1) * 700), 200) / 1024) * 100 + "%";
 			document.getElementById("textC").style.top =
-				(1 - Math.max(Math.max((200 + pointsC / Math.max(pointsC, pointsT, pointsE, pointsB, 1) * 700 - 20), (200 + pointsT / Math.max(pointsC, pointsT, pointsE, pointsB, 1) * 400)), 200) / 1024) * 100 + "%";
+				(1 - Math.max(Math.max((200 + pointsC / Math.max(pointsC, pointsT, pointsE, pointsB, 1) * 700 - 20), (200 + pointsC / Math.max(pointsC, pointsT, pointsE, pointsB, 1) * 400)), 200) / 1024) * 100 + "%";
 			document.getElementById("textC").innerHTML = pointsC;
 
 			document.getElementById("imgT").style.top =
@@ -41,13 +41,13 @@
 			document.getElementById("imgE").style.top =
 				(1 - Math.max((200 + pointsE / Math.max(pointsC, pointsT, pointsE, pointsB, 1) * 700), 200) / 1024) * 100 + "%";
 			document.getElementById("textE").style.top =
-				(1 - Math.max(Math.max((200 + pointsE / Math.max(pointsC, pointsT, pointsE, pointsB, 1) * 700 - 20), (200 + pointsT / Math.max(pointsC, pointsT, pointsE, pointsB, 1) * 400)), 200) / 1024) * 100 + "%";
+				(1 - Math.max(Math.max((200 + pointsE / Math.max(pointsC, pointsT, pointsE, pointsB, 1) * 700 - 20), (200 + pointsE / Math.max(pointsC, pointsT, pointsE, pointsB, 1) * 400)), 200) / 1024) * 100 + "%";
 			document.getElementById("textE").innerHTML = pointsE;
 
 			document.getElementById("imgB").style.top =
 				(1 - Math.max((200 + pointsB / Math.max(pointsC, pointsT, pointsE, pointsB, 1) * 700), 200) / 1024) * 100 + "%";
 			document.getElementById("textB").style.top =
-				(1 - Math.max(Math.max((200 + pointsB / Math.max(pointsC, pointsT, pointsE, pointsB, 1) * 700 - 20), (200 + pointsT / Math.max(pointsC, pointsT, pointsE, pointsB, 1) * 400)), 200) / 1024) * 100 + "%";
+				(1 - Math.max(Math.max((200 + pointsB / Math.max(pointsC, pointsT, pointsE, pointsB, 1) * 700 - 20), (200 + pointsB / Math.max(pointsC, pointsT, pointsE, pointsB, 1) * 400)), 200) / 1024) * 100 + "%";
 			document.getElementById("textB").innerHTML = pointsB;
 		}
 
