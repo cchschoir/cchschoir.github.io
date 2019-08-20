@@ -91,7 +91,7 @@
 				newValues.push([daySeries[i], cSeries[i], tSeries[i], eSeries[i], bSeries[i], fColumn[i]]);
 			}
 			return newValues;
-			console.log("newValues says daySeries ends in " + daySeries[daySeries.length - 1])
+			//console.log("newValues says daySeries ends in " + daySeries[daySeries.length - 1])
 		}
 		function resetData() {
 			resetnum--;
@@ -175,9 +175,9 @@
 					bSeries.push(array[i][4]);
 					fColumn.push(array[i][5]);
 				}
-				console.log("array[1][5] is " + array[1][5]);
+				//console.log("array[1][5] is " + array[1][5]);
 				oldday = new Date("" + array[1][5]);
-				console.log("Set oldday to " + new Date("" + array[1][5]));
+				console.log("Starting day is " + new Date("" + array[1][5]));
 				reload();
 				console.log("Data sent");
 			}, function (reason) {
