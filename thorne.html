@@ -108,7 +108,8 @@
 				tSeries[0] = 0; // Teovedar is Purple
 				eSeries[0] = 0; // Ellazaire is Yellow
 				bSeries[0] = 0; // Baladeo is Blue
-				fColumn[1] = new Date("" + new Date());
+				d = new Date();
+				fColumn[0] = document.getElementById("demo3").innerHTML = new Date(d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate() + " 6:00");
 				//oldday = new Date("" + new Date());
 				sheetsSend();
 				document.getElementById("reset").innerHTML = "All scores reset";
